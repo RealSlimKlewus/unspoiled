@@ -1,20 +1,41 @@
 <p>media-instance-selector works!</p>
 
-@for (item of data; track $index) {
-  <button type="button" (click)="selectMedium(item.medium)">{{item.medium}}</button>
-}
+<div class="mediumSelectContainer">
+
+    <mat-button-toggle-group
+      name="favoriteColor"
+      aria-label="Favorite Color"
+      [hideSingleSelectionIndicator]="true"
+    >
+      @for (item of data; track $index) {
+          <mat-button-toggle  (click)="selectMedium(item.medium)" [value]="item.medium">{{item.medium}}</mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+</div>
 
 @if (seasonBookList()) {
-  @for (item of seasonBookList(); track $index) {
-    <button type="button" (click)="selectSeasonBook(item.id)">{{item.number}}</button>
-  }
+  <div class="seasonBookSelectContainer">
+
+    <mat-button-toggle-group
+      name="favoriteColor"
+      aria-label="Favorite Color"
+      [hideSingleSelectionIndicator]="true"
+    >
+      @for (item of seasonBookList(); track $index) {
+          <mat-button-toggle  (click)="selectSeasonBook(item.id)" [value]="item.id">{{item.number}}</mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
 }
 
 
 @if (episodeChapterList()) {
-  <mat-slider min="1" [max]="episodeChapterList()!.length" step="1" showTickMarks >
-    <input matSliderThumb (change)="selectEpisodeChapter()" [(value)]="selectedEpisodeChapter">
-  </mat-slider>
+
+  <div class="episodeChapterSelectContainer">
+    <mat-slider min="1" [max]="episodeChapterList()!.length" step="1" showTickMarks >
+      <input matSliderThumb (change)="selectEpisodeChapter()" [(value)]="selectedEpisodeChapter">
+    </mat-slider>
+  </div>
 }
 
 

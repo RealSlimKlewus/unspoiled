@@ -1,11 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { MediumType, Series } from '../../models/media/media.model';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MediaInstanceService } from '../media-instance.service';
 
 @Component({
   selector: 'app-media-instance-selector',
-  imports: [MatSliderModule],
+  imports: [MatSliderModule, MatButtonToggleModule],
   templateUrl: './media-instance-selector.component.html',
   styleUrl: './media-instance-selector.component.css'
 })
