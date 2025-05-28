@@ -13,11 +13,12 @@ export class SpoilerDirective {
 
   private templateRef = inject(TemplateRef)
   private viewContainerRef = inject(ViewContainerRef)
-  
+
 
   constructor() {
     effect(()=>{
       if (!this.mediaInstanceService.checkIfIsSpoiler(this.mediaInstance())){
+        this.viewContainerRef.clear()
         this.viewContainerRef.createEmbeddedView(this.templateRef)
       } else {
         this.viewContainerRef.clear()
