@@ -1,9 +1,13 @@
 
 <unspoiled-header/>
-<main class="main">
-  @for (item of filteredData(); track item.id) {
-    <span *unspoiledSpoiler="item.mediaInstances">{{item.description }}</span>
-  }
+<main class="main flex">
+  <app-sidebar/>
+  <div class="border-purple-200 border-solid border-3">
+    @for (item of filteredData(); track item.id) {
+      <span *unspoiledSpoiler="item.mediaInstances">{{item.description }}</span>
+    }
+  </div>
+
 
 </main>
 

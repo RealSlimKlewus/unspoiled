@@ -1,13 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { MediaInstance, StoryEvent } from './models/media/media.model';
 import { MediaInstanceService } from './mediaInstance/media-instance.service';
 import { SpoilerDirective } from './directives/spoiler.directive';
+import { SidebarComponent } from "./sidebar/sidebar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SpoilerDirective],
+  imports: [RouterOutlet, HeaderComponent, SpoilerDirective, SidebarComponent],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -18,8 +19,6 @@ export class AppComponent {
   private mediaInstanceService = inject(MediaInstanceService)
   currentMediaInstance = this.mediaInstanceService.currentMediaInstance
 
-  filteredData = signal<StoryEvent[]>([])
-  
   data: StoryEvent[] = [{
     id: '1',
     description: 'smth happened',
@@ -31,7 +30,7 @@ export class AppComponent {
           chapter: 1
 
         }
-      }, 
+      },
       {
         mediumType: 'book',
         segment: {
@@ -53,7 +52,7 @@ export class AppComponent {
           chapter: 2
 
         }
-      }, 
+      },
       {
         mediumType: 'book',
         segment: {
@@ -66,12 +65,12 @@ export class AppComponent {
     consideredSpoiler: false,
     createdBy: 'me'
   }]
-  
+
+  filteredData = computed(() => this.data.filter(storyEvent=> !this.mediaInstanceService.checkIfIsSpoiler(storyEvent.mediaInstances)))
 
   constructor() {}
 
   ngOnInit() {
-    this.filteredData.set(this.data.filter(storyEvent=> !this.mediaInstanceService.checkIfIsSpoiler(storyEvent.mediaInstances)))
     console.log(this.filteredData())
   }
 }

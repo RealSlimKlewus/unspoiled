@@ -4,14 +4,11 @@ import { MediaInstanceSelectorComponent } from "../mediaInstance/media-instance-
 
 @Component({
   selector: 'unspoiled-header',
-  imports: [MediaInstanceSelectorComponent],
+  imports: [],
   standalone: true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
-  private mediaInstanceService = inject(MediaInstanceService)
-  currentMediaInstance = this.mediaInstanceService.currentMediaInstance
 
 }
