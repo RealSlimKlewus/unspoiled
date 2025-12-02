@@ -11,4 +11,6 @@ import { MediaInstanceSelectorComponent } from "../mediaInstance/media-instance-
 })
 export class HeaderComponent {
 
+  private mediaInstanceService = inject(MediaInstanceService)
+  currentMediaInstance = this.mediaInstanceService.currentMediaInstance
 }
