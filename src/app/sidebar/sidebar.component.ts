@@ -10,8 +10,10 @@ import { MediaInstanceService } from '../mediaInstance/media-instance.service';
 })
 export class SidebarComponent {
 
-
   private mediaInstanceService = inject(MediaInstanceService)
   currentMediaInstance = this.mediaInstanceService.currentMediaInstance
 
+  toggleShowSelector() {
+    this.mediaInstanceService.toggleShowMediaInstanceSelector()
+  }
 }

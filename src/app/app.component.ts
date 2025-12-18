@@ -19,6 +19,9 @@ export class AppComponent {
   private mediaInstanceService = inject(MediaInstanceService)
   currentMediaInstance = this.mediaInstanceService.currentMediaInstance
 
+  showSelector = computed(()=>this.mediaInstanceService.showMediaInstanceSelector())
+
+
   data: StoryEvent[] = [{
     id: '1',
     description: 'smth happened',

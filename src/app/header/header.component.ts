@@ -13,4 +13,9 @@ export class HeaderComponent {
 
   private mediaInstanceService = inject(MediaInstanceService)
   currentMediaInstance = this.mediaInstanceService.currentMediaInstance
+
+  toggleShowSelector() {
+    this.mediaInstanceService.toggleShowMediaInstanceSelector()
+  }
+
 }

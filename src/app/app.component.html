@@ -1,8 +1,10 @@
 
 <unspoiled-header/>
 <main class="main flex">
-  <app-sidebar/>
-  <div class="border-purple-200 border-solid border-3">
+  @if(this.showSelector()) {
+    <app-sidebar/>
+  }
+  <div class="dark:bg-gray-800 dark:text-white w-full p-3">
     @for (item of filteredData(); track item.id) {
       <span *unspoiledSpoiler="item.mediaInstances">{{item.description }}</span>
     }
