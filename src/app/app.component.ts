@@ -5,10 +5,11 @@ import { MediaInstance, StoryEvent } from './models/media/media.model';
 import { MediaInstanceService } from './mediaInstance/media-instance.service';
 import { SpoilerDirective } from './directives/spoiler.directive';
 import { SidebarComponent } from "./sidebar/sidebar.component";
+import { InfoBoxComponent } from './components/info-box/info-box.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SpoilerDirective, SidebarComponent],
+  imports: [RouterOutlet, HeaderComponent, SpoilerDirective, SidebarComponent, InfoBoxComponent],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

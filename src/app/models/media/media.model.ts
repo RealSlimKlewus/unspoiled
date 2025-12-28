@@ -20,6 +20,7 @@ export interface ContentSegment {
   chapter: number;
 }
 
+// Unused?
 type Story = Series[]
 
 export type Series = {
@@ -41,6 +42,19 @@ export type EpisodeChapter = {
   title: string | undefined
 }
 
+// Key Value Pair (Info Box)
+
+export type KeyValuePairSection = {
+  id: string
+  title: string
+  keyValuePairs: KeyValuePair[]
+}
+
+export type KeyValuePair = {
+  id: string
+  key: string
+  value: StoryEvent[]
+}
 
 
 

@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <h1>title</h1>
+  </div>
+  <div>
+    image-selector
+  </div>
+  <div>
+    <ul>
+      @for (bruv of filteredData(); track bruv.id ) {
+        <li>
+          <ul>
+            @for (kvp of bruv.keyValuePairs; track kvp.id ) {
+              <li>
+                {{kvp.key}}:
+                @for (val of kvp.value; track val.id ) {
+                    {{val.description}}
+                }
+              </li>
+            }
+          </ul>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
