@@ -68,6 +68,23 @@ export class InfoBoxComponent {
               consideredSpoiler: false,
               createdBy: 'me'
             }
+          ],
+          mediaInstances: [
+            {
+              mediumType: 'series',
+              segment: {
+                book: 1,
+                chapter: 1
+
+              }
+            },
+            {
+              mediumType: 'book',
+              segment: {
+                book: 1,
+                chapter: 1
+              }
+            }
           ]
         },
         {
@@ -120,7 +137,41 @@ export class InfoBoxComponent {
               consideredSpoiler: false,
               createdBy: 'me'
             }
-          ]
+          ],
+          mediaInstances: [
+            {
+              mediumType: 'series',
+              segment: {
+                book: 1,
+                chapter: 1
+
+              }
+            },
+            {
+              mediumType: 'book',
+              segment: {
+                book: 1,
+                chapter: 1
+              }
+            }
+          ],
+        }
+      ],
+      mediaInstances: [
+        {
+          mediumType: 'series',
+          segment: {
+            book: 1,
+            chapter: 1
+
+          }
+        },
+        {
+          mediumType: 'book',
+          segment: {
+            book: 1,
+            chapter: 1
+          }
         }
       ]
     },
@@ -178,6 +229,23 @@ export class InfoBoxComponent {
               consideredSpoiler: false,
               createdBy: 'me'
             }
+          ],
+          mediaInstances: [
+            {
+              mediumType: 'series',
+              segment: {
+                book: 1,
+                chapter: 1
+
+              }
+            },
+            {
+              mediumType: 'book',
+              segment: {
+                book: 1,
+                chapter: 1
+              }
+            }
           ]
         },
         {
@@ -230,17 +298,53 @@ export class InfoBoxComponent {
               consideredSpoiler: false,
               createdBy: 'me'
             }
+          ],
+          mediaInstances: [
+            {
+              mediumType: 'series',
+              segment: {
+                book: 1,
+                chapter: 1
+
+              }
+            },
+            {
+              mediumType: 'book',
+              segment: {
+                book: 1,
+                chapter: 1
+              }
+            }
           ]
+        }
+      ],
+      mediaInstances: [
+        {
+          mediumType: 'series',
+          segment: {
+            book: 1,
+            chapter: 1
+
+          }
+        },
+        {
+          mediumType: 'book',
+          segment: {
+            book: 1,
+            chapter: 1
+          }
         }
       ]
     }
   ]
 
 // Not sure if it is the way to go or dirty
-  filteredData = computed(() => this.keyValuePairSections.map(
-    kvps=> ({...kvps, keyValuePairs: kvps.keyValuePairs.map(
-      kvp=> ({...kvp, value: kvp.value.filter(
-        storyEvent=> !this.mediaInstanceService.checkIfIsSpoiler(storyEvent.mediaInstances))}
-      ))}
-    )))
+  filteredData = computed(() => this.keyValuePairSections.filter(
+    kvps=> !this.mediaInstanceService.checkIfIsSpoiler(kvps.mediaInstances)).map(
+      kvps=> ({...kvps, keyValuePairs: kvps.keyValuePairs.filter(
+        kvp=> !this.mediaInstanceService.checkIfIsSpoiler(kvp.mediaInstances)).map(
+          kvp=> ({...kvp, value: kvp.value.filter(
+            storyEvent=> !this.mediaInstanceService.checkIfIsSpoiler(storyEvent.mediaInstances))}
+          ))}
+      )))
 }

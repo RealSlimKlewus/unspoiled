@@ -48,12 +48,14 @@ export type KeyValuePairSection = {
   id: string
   title: string
   keyValuePairs: KeyValuePair[]
+  mediaInstances: MediaInstance[]
 }
 
 export type KeyValuePair = {
   id: string
   key: string
   value: StoryEvent[]
+  mediaInstances: MediaInstance[]
 }
 
 
